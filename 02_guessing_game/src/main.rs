@@ -24,12 +24,13 @@ fn main() {
 
         match guess.cmp(&secret_number) {
             Ordering::Less => {
-                println!("Too small");
+                println!("Too small!!");
                 if secret_number > min {
                     min = guess
                 }
             }
             Ordering::Greater => {
+                println!("Too big!!");
                 if guess < max {
                     max = guess
                 }
