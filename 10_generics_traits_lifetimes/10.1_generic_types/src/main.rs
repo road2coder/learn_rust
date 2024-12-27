@@ -8,8 +8,8 @@ fn main() {
 
     let int_point = Point { x: 18, y: 32 };
     let float_point = Point { x: 18.0, y: 32.0 };
-    println!("{}", int_point.special_method()); // ok
     // println!("{}", float_point.special_method()); // error
+    println!("{}", int_point.special_method()); // ok
 }
 
 fn largest_i32(list: &[i32]) -> &i32 {
