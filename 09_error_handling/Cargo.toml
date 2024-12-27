@@ -1,0 +1,10 @@
+[package]
+name = "error_handling"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+# https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html#unwinding-the-stack-or-aborting-in-response-to-a-panic
+[profile.release]
+panic = "abort"
