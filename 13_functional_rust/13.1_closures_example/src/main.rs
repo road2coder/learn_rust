@@ -37,7 +37,6 @@ impl Inventory {
     }
 
     fn most_stocked(&self) -> ShirtColor {
-        println!("most_stocked");
         let (num_red, num_blue) = self.shirts.iter().fold((0_u32, 0_u32), |mut acc, color| {
             match color {
                 ShirtColor::Red => acc.0 += 1,
