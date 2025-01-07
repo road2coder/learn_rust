@@ -8,17 +8,16 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        let ignore_case = env::var("IGNORE_CASE").unwrap_or("".to_string());
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
+        let ignore_case = env::var("IGNORE_CASE").unwrap_or_default();
         let ignore_case = ignore_case == "1" || ignore_case == "true";
-        match args {
-            [_, query, file_path] => Ok(Config {
-                query: query.clone(),
-                file_path: file_path.clone(),
-                ignore_case,
-            }),
-            _ => Err("not enough arguments!"),
-        }
+        let query = args.next().ok_or("Did not get a query string")?;
+        let file_path = args.next().ok_or("Did not get a file path")?;
+        Ok(Config {
+            query,
+            file_path,
+            ignore_case,
+        })
     }
 }
 
